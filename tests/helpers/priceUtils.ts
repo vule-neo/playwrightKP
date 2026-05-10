@@ -3,7 +3,7 @@ export type ParsedPrice = { value: number; currency: 'EUR' | 'DIN' };
 export function parsePrice(priceText: string): ParsedPrice | null {
   const cleaned = priceText.trim();
 
-  if (!cleaned || cleaned.toLowerCase().includes('dogovoru')) {
+  if (!cleaned) {
     return null;
   }
 

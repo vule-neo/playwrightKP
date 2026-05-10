@@ -33,7 +33,7 @@ test.describe('Sort by price — Automobiles', () => {
     expect(await automobilesPage.isSortedByCheapest()).toBe(true);
   });
 
-  test('listings with no price appear at the end of sorted results', async ({ page }) => {
+  test('listings without a price (Kupujem/Kontakt) appear at the end of sorted results', async ({ page }) => {
     const automobilesPage = new AutomobilesPage(page);
     await automobilesPage.navigate();
     await automobilesPage.sortByCheapest();
@@ -42,7 +42,7 @@ test.describe('Sort by price — Automobiles', () => {
     const firstNullIndex = priceTexts.findIndex(t => parsePrice(t) === null);
 
     if (firstNullIndex === -1) {
-      // nema "po dogovoru" oglasa na ovoj stranici
+      // no Kupujem/Kontakt listings on this page
       return;
     }
 
